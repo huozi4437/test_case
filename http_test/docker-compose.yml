@@ -1,0 +1,8 @@
+version: "3"
+services:
+  http_server:
+    container_name: http_service
+    image: c17a353b7d1e
+    restart: always
+    ports:
+      - 30001:30001

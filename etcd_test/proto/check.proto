@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+service CheckService {
+    rpc SearchCheck (CheckRequest) returns (CheckResponse) {
+    }
+}
+
+message CheckRequest {
+    string info = 1;
+}
+
+message CheckResponse {
+    string msg = 1;
+}

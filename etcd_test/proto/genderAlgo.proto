@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package proto;
+
+service GenderService {
+    rpc SearchGender (GenderRequest) returns (GenderResponse) {
+    }
+}
+
+message GenderRequest {
+    string voiceId = 1;
+    uint64 start_time = 2;
+    uint64 end_time = 3;
+}
+
+message GenderResponse {
+    message Status {
+        enum Code {
+            OK = 0;
+            ERR = 1;
+        }
+        Code code = 1;
+        string msg = 2;
+    }
+    Status status = 1;
+    string gender = 2;
+}
