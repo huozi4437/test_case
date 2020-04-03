@@ -1,0 +1,21 @@
+#!/bin/sh
+echo "pre-commit"
+
+cd `git rev-parse --show-toplevel`
+
+# gofmt 格式化代码
+command -v gofmt >/dev/null 2>&1 || { echo >&2 "\nThis repository is configured for gofmt but 'gofmt' was not found on your path.\n"; exit 2; }
+gofmt -s -w .
+
+# go vet 代码检查
+if command -v go > /dev/null;then
+go vet ./...
+if [ $? != 0 ];then
+	echo >&2 "Please fix the errors.";
+	exit 2;
+fi
+else
+	echo >&2 "This repository is configured for go but go is not found on your path.";
+	exit 2;
+fi
+

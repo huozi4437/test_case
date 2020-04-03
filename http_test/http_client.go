@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"sync"
+ 	_ "net/http/pprof"
 )
 
 type Reader struct {
@@ -41,7 +42,7 @@ func Post(wait *sync.WaitGroup) {
 	//bytes.NewBufferString("aa")
 	//Read := &Reader{}
 	//Read.Open("./voice.wav")
-	file, err := os.Open("./voice.wav")
+	file, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println("Open file err:", err)
 		return

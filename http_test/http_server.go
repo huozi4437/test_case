@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	_ "net/http/pprof"
 )
 
 var succeNum int
